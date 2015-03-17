@@ -1,0 +1,9 @@
+import java.io.*;
+public class tax {
+  public static void main(String[]args)
+  {
+   BufferedReader br= new BufferedReader (new InputStreamReader(System.in)
+ doubel tax:30;
+                                          
+  }
+}
