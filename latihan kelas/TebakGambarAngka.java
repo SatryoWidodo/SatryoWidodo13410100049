@@ -1,6 +1,6 @@
 import java.io.*;
 public class TebakGambarAngka{
- public static void main(String[]args)throws IOException
+ public static void main(String[]args)throws a0IOException
   {
     BufferedReader br=new BufferedReader (new InputStreamReader(System.in));
  int bilrandom = (int)(Math.random()+0.5);
