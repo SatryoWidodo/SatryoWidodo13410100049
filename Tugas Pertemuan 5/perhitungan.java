@@ -1,5 +1,5 @@
 import java.io.*;
-public class hitungan {
+class perhitungan {
  public static void main (String[]args) throws IOException
  {
  BufferedReader br=new BufferedReader (new InputStreamReader(System.in));

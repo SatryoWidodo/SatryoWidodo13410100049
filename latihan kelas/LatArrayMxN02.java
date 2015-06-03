@@ -8,7 +8,6 @@ public class LatArrayMxN02 {
     {0,0,0,0,1,1},
     {0,0,0,0,1,1}};
    
-     
     
     for(int i=1;i<data.length;i++){
       for (int j=0;j<data[i].length;j++){
