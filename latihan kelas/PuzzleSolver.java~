@@ -1,0 +1,160 @@
+package CrosswordPuzzle;
+import java.util.*;
+
+public class PuzzleSolver {
+
+public static String[] DICTIONARY = {"OX","CAT","TOY","AT","DOG","CATAPULT","T"};
+    
+    public static int findWords(char[][] puzzle)
+    {
+     int rows,columns,i,j,k,l,count;
+     count=0;
+     String word;
+     rows=puzzle.length;
+     columns=puzzle[0].length;
+     //word with length 1 is counted only once hence count-- after the first occurrence of it
+     
+     //row wise
+     for(i=0;i<rows;i++){
+      for(j=0;j<columns;j++){
+       word = "";
+       for(k=j;k<columns;k++){
+        word =  word+puzzle[i][k];
+        if(isWord(word)){
+         count++;
+         System.out.println(word);
+        }
+       }
+       word = "";
+       for(k=j;k>=0;k--){
+        word =  word+puzzle[i][k];
+        if(isWord(word)){
+         count++;
+         if(word.length()==1){
+          count--;
+         }
+         else{
+          System.out.println(word);
+         }
+        }
+       }
+      }
+     }
+     
+     //column wise
+     for(i=0;i<columns;i++){
+      for(j=0;j<rows;j++){
+       word = "";
+       for(k=j;k<rows;k++){
+        word =  word+puzzle[k][i];
+        if(isWord(word)){
+         count++;
+         if(word.length()==1){
+          count--;
+         }
+         else{
+          System.out.println(word);
+         }
+        }
+       }
+       word = "";
+       for(k=j;k>=0;k--){
+        word =  word+puzzle[k][i];
+        if(isWord(word)){
+         count++;
+         if(word.length()==1){
+          count--;
+         }
+         else{
+          System.out.println(word);
+         }
+        }
+       }
+      }
+     }
+     
+     //diagonally 
+     //1
+     for(l=0;l<rows;l++){
+      for(k=0;k<columns;k++){
+       word="";
+       for(i=l,j=k;i<rows&&j>=0;i++,j--){
+        word=word+puzzle[i][j];
+        if(isWord(word)){
+         count++;
+         if(word.length()==1){
+          count--;
+         }
+         else{
+          System.out.println(word);
+         }
+        }
+        word=new StringBuilder(word).reverse().toString();
+        if(isWord(word)){
+         count++;
+         if(word.length()==1){
+          count--;
+         }
+         else{
+          System.out.println(word);
+         }
+        }
+       }
+      }
+     }
+     
+     //2
+     for(l=0;l<rows;l++){
+      for(k=columns-1;k>=0;k--){
+       word="";
+       for(i=l,j=k;i<rows&&j<columns;i++,j++){
+        word=word+puzzle[i][j];
+        if(isWord(word)){
+         count++;
+         if(word.length()==1){
+          count--;
+         }
+         else{
+          System.out.println(word);
+         }
+        }
+        word=new StringBuilder(word).reverse().toString();
+        if(isWord(word)){
+         count++;
+         if(word.length()==1){
+          count--;
+         }
+         else{
+          System.out.println(word);
+         }
+        }
+       }
+      }
+     }
+          
+     
+        return count;
+    }
+
+    static boolean isWord(String testWord)
+    {
+        if (Arrays.asList(DICTIONARY).contains(testWord))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        char[][] puzzle = new char[][] { 
+          {'C','A','T'}, 
+                {'X','Z','T'}, 
+                {'Y','O','T'} 
+        };
+        System.out.print("Output: " + findWords(puzzle));
+    }
+}
